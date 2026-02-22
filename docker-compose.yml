@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: penguin-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models      # volumen compartido
+      - ./logs:/app/logs          # volumen solo para API
+    depends_on:
+      - jupyter
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.jupyter
+    container_name: penguin-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./models:/workspace/models        # volumen compartido
+      - ./notebooks:/workspace/notebooks  # volumen solo Jupyter
