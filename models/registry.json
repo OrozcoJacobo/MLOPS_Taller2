@@ -1,0 +1,10 @@
+{
+  "default_model": "knn",
+  "available_models": [
+    "gb",
+    "knn",
+    "logreg",
+    "rf",
+    "svm"
+  ]
+}
